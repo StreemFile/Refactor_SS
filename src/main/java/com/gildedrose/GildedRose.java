@@ -26,7 +26,7 @@ class GildedRose {
 
     private void checkNameAndQualityAndUpdateQuality(Item item) {
         if (ItemUtils.isNotAgedBrieAndBackstage(item)) {
-            decrementQualityWithCheck(item);
+            checkQualityAndIsNotSulfurasAndUpdateQuality(item);
         } else {
             if (ItemUtils.isQualityLessThan(item, Quality.SECOND_VALUE.getValue())) {
                 ItemUtils.incrementQuality(item);
@@ -52,7 +52,7 @@ class GildedRose {
         if (ItemUtils.isSellInLessThan(item, SellIn.FIRST_VALUE.getValue())) {
             if (ItemUtils.isNotAgedBrie(item)) {
                 if (ItemUtils.isNotBackstage(item)) {
-                    decrementQualityWithCheck(item);
+                    checkQualityAndIsNotSulfurasAndUpdateQuality(item);
                 } else {
                     ItemUtils.setQualityZero(item);
                 }
@@ -72,7 +72,7 @@ class GildedRose {
         }
     }
 
-    private void decrementQualityWithCheck(Item item) {
+    private void checkQualityAndIsNotSulfurasAndUpdateQuality(Item item) {
         if (ItemUtils.isQualityMoreThan(item, Quality.FIRST_VALUE.getValue())) {
             if (ItemUtils.isNotSulfuras(item)) {
                 ItemUtils.decrementQuality(item);
