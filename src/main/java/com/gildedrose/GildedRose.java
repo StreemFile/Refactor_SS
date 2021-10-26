@@ -31,12 +31,12 @@ class GildedRose {
             if (ItemUtils.isQualityLessThan(item, Quality.SECOND_VALUE.getValue())) {
                 ItemUtils.incrementQuality(item);
                 if (ItemUtils.isBackstage(item)) {
-                    incrementQualityWithSellInAndQualityCheck(item,
-                                                              SellIn.THIRD_VALUE.getValue(),
-                                                              Quality.SECOND_VALUE.getValue());
-                    incrementQualityWithSellInAndQualityCheck(item,
-                                                              SellIn.SECOND_VALUE.getValue(),
-                                                              Quality.SECOND_VALUE.getValue());
+                    checkSellInAndQualityAndUpdateQuality(item,
+                                                          SellIn.THIRD_VALUE.getValue(),
+                                                          Quality.SECOND_VALUE.getValue());
+                    checkSellInAndQualityAndUpdateQuality(item,
+                                                          SellIn.SECOND_VALUE.getValue(),
+                                                          Quality.SECOND_VALUE.getValue());
                 }
             }
         }
@@ -64,7 +64,7 @@ class GildedRose {
         }
     }
 
-    private void incrementQualityWithSellInAndQualityCheck(Item item, Integer sellIn, Integer quality) {
+    private void checkSellInAndQualityAndUpdateQuality(Item item, Integer sellIn, Integer quality) {
         if (ItemUtils.isSellInLessThan(item, sellIn)) {
             if (ItemUtils.isQualityLessThan(item, quality)) {
                 ItemUtils.incrementQuality(item);
